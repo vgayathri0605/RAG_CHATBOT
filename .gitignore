@@ -1,0 +1,20 @@
+# Virtual environment - too large to push
+venv/
+
+# API keys - never push this
+.env
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary files
+temp_*.pdf
+
+# Personal notes - keep private
+notes.md
+
+# OS files
+.DS_Store
+Thumbs.db
