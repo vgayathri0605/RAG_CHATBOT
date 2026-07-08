@@ -52,7 +52,10 @@ Prompt Template → combines chunks + question
 Groq / Llama 3.1 → reads context, writes grounded answer
 ↓
 Streamlit UI → displays answer in chat
+<<<<<<< HEAD
 
+=======
+>>>>>>> c5f389574047ff1ec305ec0d2f49e10f62643c1a
 
 🛠️ Tech Stack
 
