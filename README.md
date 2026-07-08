@@ -31,57 +31,27 @@ Upload a PDF → Ask questions → Get accurate, grounded answers instantly.
 
 🏗️ Architecture
 
-User uploads PDF
-       │
-       ▼
-┌─────────────────┐
-│   PyPDFLoader   │  ← Extracts text from each page
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────────────────┐
-│ RecursiveCharacterSplitter  │  ← Splits text into chunks (1000 chars, 200 overlap)
-└────────────┬────────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│  HuggingFace Embeddings  │  ← Converts chunks to vectors (numbers)
-│   (all-MiniLM-L6-v2)    │     Runs locally, no API needed
-└────────────┬─────────────┘
-             │
-             ▼
-┌─────────────────┐
-│      FAISS      │  ← Stores all vectors in memory for fast similarity search
-│  Vector Store   │
-└────────┬────────┘
-         │
-    User asks a question
-         │
-         ▼
-┌─────────────────────────┐
-│  HuggingFace Embeddings  │  ← Converts question to vector
-└────────────┬─────────────┘
-             │
-             ▼
-┌─────────────────┐
-│      FAISS      │  ← Finds top 4 most similar chunks
-│    Retriever    │
-└────────┬────────┘
-         │
-         ▼
-┌──────────────────────┐
-│   Prompt Template    │  ← Combines retrieved chunks + question
-│  (with context)      │
-└────────┬─────────────┘
-         │
-         ▼
-┌──────────────────────┐
-│  Groq (Llama 3.1)    │  ← Reads context, generates grounded answer
-└────────┬─────────────┘
-         │
-         ▼
-    Answer displayed
-    in chat interface
+PDF Upload
+↓
+PyPDFLoader → reads each page as text
+↓
+RecursiveCharacterTextSplitter → breaks into chunks (1000 chars, 200 overlap)
+↓
+HuggingFace Embeddings → converts each chunk to numbers (vectors)
+↓
+FAISS Vector Store → stores all vectors in memory
+↓
+User types a question
+↓
+HuggingFace Embeddings → converts question to vector
+↓
+FAISS Retriever → finds top 4 most similar chunks
+↓
+Prompt Template → combines chunks + question
+↓
+Groq / Llama 3.1 → reads context, writes grounded answer
+↓
+Streamlit UI → displays answer in chat
 
 
 🛠️ Tech Stack
