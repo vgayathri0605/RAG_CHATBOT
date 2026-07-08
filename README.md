@@ -28,30 +28,31 @@ Upload a PDF → Ask questions → Get accurate, grounded answers instantly.
 🆓 Completely free to run — uses Groq (free tier) + HuggingFace local embeddings
 
 
+## 🏗️ Architecture
 
-🏗️ Architecture
-
+```
 PDF Upload
-↓
+    ↓
 PyPDFLoader → reads each page as text
-↓
+    ↓
 RecursiveCharacterTextSplitter → breaks into chunks (1000 chars, 200 overlap)
-↓
+    ↓
 HuggingFace Embeddings → converts each chunk to numbers (vectors)
-↓
+    ↓
 FAISS Vector Store → stores all vectors in memory
-↓
+    ↓
 User types a question
-↓
+    ↓
 HuggingFace Embeddings → converts question to vector
-↓
+    ↓
 FAISS Retriever → finds top 4 most similar chunks
-↓
+    ↓
 Prompt Template → combines chunks + question
-↓
+    ↓
 Groq / Llama 3.1 → reads context, writes grounded answer
-↓
+    ↓
 Streamlit UI → displays answer in chat
+```
 
 
 🛠️ Tech Stack
