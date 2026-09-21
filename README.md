@@ -1,3 +1,4 @@
+<img width="1681" height="665" alt="demo" src="https://github.com/user-attachments/assets/93a1f37d-9400-47f9-9e1d-83914a413e2e" />
 📄 PDF Q&A RAG Chatbot
 
 A conversational AI application that lets you upload any PDF and ask questions about it in natural language. Built using a Retrieval-Augmented Generation (RAG) pipeline — the AI retrieves relevant content from your document before generating a grounded, accurate answer.
